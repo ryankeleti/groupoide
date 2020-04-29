@@ -147,11 +147,11 @@ Thus suppose $I\neq\varnothing$.
     then $V$ is the sum of $V_1$ and $V_2$.
     Thus $V_1$ or $V_2$ is empty.
     As every $U_i$ is nonempty, $I_1$ or $I_2$ is empty.
-  \item[(b)$\implies$(a)] ($U_i$ connected and nonempty). Let $(Y_\alpha)_{\alpha\in\Lambda}$ be a family of objects of $E$, and consider a morphism
+  \item[(b)$\implies$(a)] ($U_i$ connected and nonempty). Let $(Y_\alpha)_{\alpha\in A}$ be a family of objects of $E$, and consider a morphism
     \[
       V\longrightarrow Y=\coprod_\alpha Y_\alpha.
     \]
-    For each $\alpha\in\Lambda$, let $I_\alpha$ be the set of the $i\in I$ such that the composition
+    For each $\alpha\in A$, let $I_\alpha$ be the set of the $i\in I$ such that the composition
     \[
       U_i\longrightarrow V\longrightarrow Y
     \]
@@ -159,7 +159,7 @@ Thus suppose $I\neq\varnothing$.
     Since the $U_i$ are connected and nonempty, $I$ is the disjoint union of the $I_\alpha$.
     Let $\alpha$ and $\beta$ be two distinct indices.
     If $i\in I_\alpha$ and $j\in I_\beta$, then $U_i\times_V U_j$ is empty since it is a subobject of $U_i\times_Y U_j$.
-    Applying~(b), we see that $I=I_{\alpha_0}$ for an $\alpha_0\in\Lambda$ and (???).
+    Applying~(b), we see that $I=I_{\alpha_0}$ for an $\alpha_0\in A$ and (???).
     Thus $Y$ is connected and nonempty by (1.2).
 \end{enumerate}
 \end{proof}
@@ -254,6 +254,144 @@ In this case, given an object $X$ of $E$, the fibred products
 \oldpage{5}
 
 Fix a $\cal{U}$-topos $E$.
+
+\subsection{Locally constant objects}
+\subsubsection{Definitions}
+\begin{enumerate}[label=(\arabic*)]
+  \item Let $A$ and $B$ be two objects of $E$.
+    We say that $A$ trivializes $B$ if $A\times B\xrightarrow{\pr_1}A$ is a constant object of the topos $E_{/A}$.
+  \item We say that an object $L$ of $E$ is \emph{locally constant} if the objects of $E$ which trivialize $L$ cover $E$.
+  \item Finally, we say that a presheaf $F$ on a category $\cat{C}$ is locally constant if for every morphism $X\to Y$ of $\cat{C}$, the map $F(Y)\to F(X)$ is bijective.
+\end{enumerate}
+
+\subsubsection{}
+Let $Y$ be an object of $E$ and $D\xrightarrow{u}C$ a morphism of $E$.
+\begin{enumerate}[label=(\roman*)]
+  \item If $C$ trivializes $Y$, then $D$ trivializes $Y$;
+  \item if, in addition, $C$ and $D$ are connected and nonempty, then the map $f\mapsto f\circ u$ from $\Hom(C,Y)$ to $\Hom(D,Y)$ is \emph{bijective}.
+\end{enumerate}
+
+\begin{proof}
+Take a set $I$ and a $C$-isomorphism $\alpha:C\times Y\xrightarrow{\sim}I_C$.
+\begin{enumerate}[label=(\roman*)]
+  \item We have the Cartesian diagrams
+    \[
+      \xymatrix{
+        D\times Y\ar[r]\ar[d] & C\times Y\ar[d]\\
+        D\ar[r] & C
+      }
+      \qquad
+      \xymatrix{
+        I_D\ar[r]\ar[d] & I_C\ar[d]\\
+        D\ar[r] & C,
+      }
+    \]
+    hence a $D$-isomorphism
+    \[
+      \beta:D\times Y\longrightarrow I_D.
+    \]
+  \item Let $f:C\to Y$ and $g:D\to Y$.
+    For $f\circ u=g$, it is necessary and sufficient that the diagram
+    \[
+      \xymatrix{
+        D\times Y\ar[r] & C\times Y\\
+        D\ar[u]^{(1_D,g)}\ar[r] & C\ar[u]_{(1_C,f)}
+      }
+    \]
+    \oldpage{6} is commutative, or that the diagram
+    \[
+      \xymatrix{
+        I_D\ar[r] & I_C\\
+        D\ar[u]^{\beta\circ(1_D,g)}\ar[r] & C\ar[u]_{\alpha\circ(1_C,f)}
+      }
+    \]
+    is commutative, hence (ii) by (1.3).
+\end{enumerate}
+\end{proof}
+
+\subsubsection{}
+\begin{enumerate}[label=(\roman*)]
+  \item Let $C$ and $X$ be two objects of $E$.
+    We have a natural morphism
+    \[
+      p:\Hom(C,X)_C\longrightarrow X;
+    \]
+    this is the morphism which, for every $f\in\Hom(C,X)$, makes the diagram
+    \[
+      \xymatrix{
+        C\ar[rrd]^f\ar[d]_{i_f}\\
+        \Hom(C,X)_C\ar[rr]^p & & X
+      }
+    \]
+    commute, where $i_f$ denotes the section of $\Hom(X,C)_C$ over $C$ defined by $f$.
+
+    We also have a natural $C$-morphism:
+    \[
+      m=(q,p):\Hom(C,X)_C\longrightarrow C\times X
+    \]
+    where $q$ denotes the $C$-morphism $\Hom(C,X)_C\to C$.
+  \item If $C$ is connected, nonempty, and trivializes $X$, then the natural $C$-morphism
+    \[
+      \Hom(C,X)_C\longrightarrow C\times X
+    \]
+    is an \emph{isomorphism}.
+\end{enumerate}
+
+\begin{proof}
+Take a set $I$ and a $C$-isomorphism $I_C\to C\times X$.
+We get a bijection
+\[
+  \Hom_C(C,I_C)\xrightarrow{~\sim~}\Hom_C(C,C\times X)\xrightarrow{~\sim~}\Hom(C,X),
+\]
+hence a diagram in $E_{/C}$:
+\[
+  \xymatrix{
+    (\Hom_C(C,I_C))_C\ar[r]^-\sim\ar[d] & \Hom(C,X)_C\ar[d]\\
+    I_C\ar[r] & C\times X,
+  }
+\]
+the commutativity of this diagram proves our assertion.
+\end{proof}
+
+\subsubsection{}
+\oldpage{7}
+Let $p$ be a point of $E$, $C$ a connected object of $E$, $y_0$ a point of the fibre $p^{-1}(C)$, and $X$ an object of $E$.
+If $C$ trivializes $X$, then the map
+\begin{align*}
+  f & \longmapsto f(y_0)\\
+  \Hom(C,X) & \longrightarrow p^{-1}(X)
+\end{align*}
+is \emph{bijective}.
+
+\begin{proof}
+Indeed, this follows from the map
+\begin{align*}
+  (y,f) & \longmapsto (y,f(y))\\
+  p^{-1}(C)\times\Hom(C,X) & \longrightarrow p^{-1}(C)\times p^{-1}(X)
+\end{align*}
+which comes from, by passage to fibres, the natural isomorphism
+\[
+  \Hom(C,X)_C\longrightarrow C\times X\quad\text{(2.1.3, ii)}.
+\]
+\end{proof}
+
+\subsubsection{}
+Let $L$ be a locally constant object of $E$ and $U$ the image of $L\to e_E$.
+There exists an object $V$ of $E$ such that $U\amalg V$ is isomorphic to $e_E$.
+
+\begin{proof}
+Cover $e_E$ by objects $(U_i)_{i\in I}$ which trivialize $L$.
+Let $I_0$ (resp. $I_1$) be the set of $i\in I$ such that $U_i\times L$ are empty (resp. nonempty).
+For every $i\in I_0$ and every $j\in I_1$, $U_i\times U_j$ is empty;
+indeed, there exists a nonempty set $F$ such that $F_{U_i\times U_j}$ is empty.
+
+Let $V_0$ and $V_1$ be respectively the images of:
+\[
+  \coprod_{i\in I_0}U_i\longrightarrow e_E,\quad\coprod_{i\in I_1}U_i\longrightarrow e_E.
+\]
+Evidently, $V_1$ is a subobject of $U$, and $U\times V_0$ is empty.
+As $e_E$ is the sum of $V_0$ and $V_1$, we conclude that $V_1\simeq U$ and $U\amalg V_0\simeq e_E$.
+\end{proof}
 
 \end{document}
 
