@@ -1,17 +1,22 @@
-\documentclass[10pt]{amsart}
+\documentclass[10pt,oneside]{amsart}
 
 \usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
 \usepackage[all]{xy}
+\usepackage{marginnote}
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathpazo}
 \usepackage{microtype}
 
+\newcommand{\oldpage}[1]{\marginnote{\textbf{#1}}}
+
 \newcommand{\cal}{\mathcal}
 \newcommand{\cat}{\mathsf}
+
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pr}{pr}
 
 \begin{document}
 \title{Groupo\"ide fondemental et theoreme de van~Kampen en theorie de topos}
@@ -25,7 +30,7 @@ My results were demonstrated during algebraic geometry meetings with D. Alibert 
 \end{center}
 
 \section*{Introduction}
-
+\oldpage{I}
 The title is enough to delimit the subject; I put the essential explanations in the table of contents, thus
 forming an
 \begin{center}
@@ -51,7 +56,7 @@ ANALYTICAL TABLE.
     and it will allow us to define the fundamental groupoid of a topos by a universal property.
   \item \textbf{Inductive limits of topoi and van Kampen's theorem}~(p.~37)
     We define an inductive system of topoi using a fibred category in topoi over a category of indices.
-    The Cartesian sections of this fibred category are the objects of the topos which is the inductive limit of the system.
+    The Cartesian sections of this fibred category \oldpage{II} are the objects of the topos which is the inductive limit of the system.
     So the objects of an inductive limit of topoi appears as objects of the direct sum with some decent data.
     Theorem 4.5 is used to describe the fundamental groupoid of an inductive limit of locally connected topoi given their fundamental groupoids.
     The statement and proof of this theorem involve an auxilliary topos, sort of an intermediate gluing between the direct sum and the inductive limit, which is described in (4.3) and (4.4).
@@ -73,7 +78,7 @@ ANALYTICAL TABLE.
 \end{thebibliography}
 
 \section*{Conventions and notations}
-
+\oldpage{III}
 \begin{enumerate}[label=(\arabic*)]
   \item \textbf{Universe}: Throughout the text we fix a universe $\cal{U}$.
   \item \textbf{Morphisms of topoi}:
@@ -87,7 +92,7 @@ ANALYTICAL TABLE.
 \end{enumerate}
 
 \section{Connected objects in a topos}
-
+\oldpage{1}
 All the topoi considered are $\cal{U}$-topoi.
 
 \subsection{Definitions}
@@ -113,6 +118,7 @@ The following properties are equivalent:
 \end{enumerate}
 
 \subsection{}
+\oldpage{2}
 Let $(U_i\xrightarrow{f_i}V)_{i\in I}$ be an epimorphic family of a topos $E$.
 Consider the properties:
 \begin{enumerate}[label=(\alph*)]
@@ -159,6 +165,7 @@ Thus suppose $I\neq\varnothing$.
 \end{proof}
 
 \subsection{}
+\oldpage{3}
 Every object of a locally connected topos is the direct sum of connected objects (thus the direct sum of its connected components).
 
 \begin{proof}
@@ -199,6 +206,7 @@ In this case, given an object $X$ of $E$, the fibred products
     \[
       c(X)\longrightarrow c(Y).
     \]
+    \oldpage{4}
     We thus obtain a covariant functor
     \[
       c:E\longrightarrow\cat{Set}.
@@ -241,6 +249,11 @@ In this case, given an object $X$ of $E$, the fibred products
     we conclude by (1.2).
 \end{enumerate}
 \end{proof}
+
+\section{Locally constant objects and Galois objects}
+\oldpage{5}
+
+Fix a $\cal{U}$-topos $E$.
 
 \end{document}
 
